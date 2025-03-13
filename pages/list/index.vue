@@ -31,7 +31,7 @@ const baseURL = config.public.apiBase;
 
 const features = useState<Feature[]>('features', () => []);
 
-const { data, error } = useFetch<Feature[]>('/features', {
+const { data, error } = await useFetch<Feature[]>('/features', {
     baseURL
 });
 

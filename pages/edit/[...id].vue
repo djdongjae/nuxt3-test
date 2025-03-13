@@ -50,7 +50,7 @@ const feature = useState<Feature>('feature', () => ({
     id: ""
 }));
 
-const { data, error } = useFetch<Feature>(`/features/${featureId}`, { baseURL });
+const { data, error } = await useFetch<Feature>(`/features/${featureId}`, { baseURL });
 
 if (data.value) {
         feature.value = data.value;
