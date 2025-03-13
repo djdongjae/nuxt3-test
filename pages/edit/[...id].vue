@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md mt-5">
         <h1 class="text-xl font-bold mb-4 border-b pb-2">기관 수정</h1>
         <div class="space-y-4">
             <input type="text" v-model="feature.properties.fac_nam" placeholder="기관명"
