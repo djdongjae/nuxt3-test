@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { useState, useFetch, useRuntimeConfig, useRoute, navigateTo, watchEffect } from '#app';
+import { useState, useFetch, useRuntimeConfig, useRoute, navigateTo } from '#app';
 import type { Feature } from '~/types/Feature';
 
 const config = useRuntimeConfig();
@@ -52,12 +52,10 @@ const feature = useState<Feature>('feature', () => ({
 
 const { data, error } = useFetch<Feature>(`/features/${featureId}`, { baseURL });
 
-watchEffect(() => {
-    if (data.value) {
+if (data.value) {
         feature.value = data.value;
     }
-})
-
+    
 if (error.value) {
     alert('조회 에러: ' + error.value.message);
 }

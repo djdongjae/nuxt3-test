@@ -43,7 +43,7 @@ if (error.value) {
     alert('조회 에러: ' + error.value.message);
 }
 
-const goEdit = (id: number) => {
+const goEdit = (id: string) => {
     navigateTo(`/edit/${id}`);
 };
 </script>

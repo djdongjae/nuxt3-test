@@ -1,75 +1,20 @@
-# Nuxt Minimal Starter
+# 구현 및 공부 내용 정리
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 1. Nuxt State Managment - useState
 
-## Setup
+---
+기본적으로 기관 목록의 데이터에 변경이 생기면 화면도 즉시 변경되어야 한다. 이를 위해 기관 목록을 저장하는 `features`를 반응형 상태로 구현해야한다. 
 
-Make sure to install dependencies:
+기존 Vue 또는 Nuxt2에서는 다음과 같이 ref 반응형 상태로 구현했었다.
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+```javascript
+const features = ref([]);
 ```
 
-## Development Server
+현재 프로젝트 Nuxt3에서는 다음과 같이 useState를 이용하여 반응형을 구현한다.
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```typescript
+const features = useState<Feature[]>('features', () => []);
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+다음과 같이 공식문서를 확인해보면 **반응형에 특화되고 SSR 친화적인** 공유 상태를 생성한다는 것을 볼 수 있다.
