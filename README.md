@@ -1,27 +1,32 @@
-# 구현 및 공부 내용 정리
+# Nuxt3
 
-## 1. Nuxt3 State Managment - useState
+## 1. 개요
 
----
-기본적으로 기관 목록의 데이터에 변경이 생기면 화면도 즉시 변경되어야 한다. 이를 위해 기관 목록을 저장하는 `features`를 반응형 상태로 구현해야한다. 
+Nuxt3의 프로젝트 구조와 동작 원리를 학습하고 이를 실습 적용해보기 위한 간단한 프론트엔드 학습 프로젝트
 
-기존 Vue 또는 Nuxt2에서는 다음과 같이 ref 반응형 상태로 구현했었다.
+## 2. 기술 스택
 
-```javascript
-const features = ref([]);
-```
+프론트엔드 학습을 목적으로하는 실습 프로젝트이기 때문에 백엔드 서버는 간단하게 `json-server` 라이브러리와 `Node.js` 엔진으로 단순하게 구축
 
-현재 프로젝트 Nuxt3에서는 다음과 같이 useState를 이용하여 반응형을 구현한다.
+#### Frontend
 
-```typescript
-const features = useState<Feature[]>('features', () => []);
-```
+<img src="https://img.shields.io/badge/Nuxt3-00DC82?style=flat-square&logo=Nuxt&logoColor=white" />&nbsp;<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />&nbsp;<img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=white" />
 
-다음과 같이 공식문서를 확인해보면 **반응형에 특화되고 SSR 친화적인** 공유 상태를 생성한다는 것을 볼 수 있다.
+#### Backend
 
-<p>
- <img src="/assets/img/스크린샷 2025-03-13 111104.png" />
-</p>
+<img src="https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=Node.js&logoColor=white" />&nbsp;<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white" />&nbsp;<img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white" />
 
-## 2. Nuxt3 life cycle - useFetch
+## 3. 아키텍쳐
+
+1. 클라이언트 요청: Vercel 서버에서 가동 중인 Nuxt3가 SSR 방식으로 페이지를 로드함.
+2. 데이터 요청: Nuxt3에서 EC2 서버로 데이터를 요청.
+3. 웹서버 중간 처리: Nginx 웹서버에서 CORS와 proxy pass 설정을 통해 백그라운드에서 구동 중인 json-server로 요청을 전달.
+4. 데이터 응답: Nuxt3 페이지로 처리한 데이터를 응답. 
+
+## 4. 공부 내용 정리
+
+Nuxt3, Vercel 공식 문서와 각종 자료를 바탕으로 학습한 내용을 정리합니다.
+
+- [Nuxt3 State Managment](md/state-man.md)
+- [Nuxt3 Universal Rendering]()
 
