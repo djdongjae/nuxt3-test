@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold mb-4 border-b-2 pb-2">기관 목록</h1>
+        <h1 class="text-2xl font-bold mb-4 border-b-2 pb-2">노인기관 목록</h1>
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-200 text-center">
