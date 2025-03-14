@@ -17,8 +17,12 @@
             </select>
 
             <div class="flex space-x-4">
-                <button type="button" @click="save" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">저장</button>
-                <button type="button" @click="goList" class="px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500">취소</button>
+                <button type="button" @click="save"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">저장</button>
+                <button type="button" @click="deleteFeature"
+                    class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">삭제</button>
+                <button type="button" @click="goList"
+                    class="px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500">취소</button>
             </div>
         </div>
     </div>
@@ -53,9 +57,9 @@ const feature = useState<Feature>('feature', () => ({
 const { data, error } = await useFetch<Feature>(`/features/${featureId}`, { baseURL });
 
 if (data.value) {
-        feature.value = data.value;
-    }
-    
+    feature.value = data.value;
+}
+
 if (error.value) {
     alert('조회 에러: ' + error.value.message);
 }
@@ -70,6 +74,20 @@ const save = async () => {
             body: feature.value,
         });
         navigateTo('/list');
+    } catch (err) {
+        alert('저장 에러: ' + (err instanceof Error ? err.message : err));
+    }
+};
+
+const deleteFeature = async () => {
+    try {
+        if (confirm("삭제하시겠습니까?")) {
+            await useFetch(`/features/${featureId}`, {
+                baseURL,
+                method: 'DELETE'
+            });
+            navigateTo('/list');
+        }
     } catch (err) {
         alert('저장 에러: ' + (err instanceof Error ? err.message : err));
     }
